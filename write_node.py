@@ -4,7 +4,7 @@ from locust import HttpLocust, TaskSet
 def writePost(locust):
     postid = random.randint(1, 500)
     url_pre = '/api/cs144/';
-    locust.client.put(url_pre + str(postid) + url_post, {"title": "Loading Test", "body": "***Hello World!***"}, name='/api/cs144')
+    locust.client.put(url_pre + str(postid), {"title": "Loading Test", "body": "***Hello World!***"}, name='/api/cs144')
 
 class MyTaskSet(TaskSet):
     """ the class MyTaskSet inherits from the class TaskSet, defining the behavior of the user """
