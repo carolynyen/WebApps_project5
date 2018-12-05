@@ -1,0 +1,8 @@
+val lines = sc.textFile("twitter.edges") 
+val ids = lines.flatMap(line => line.split("[ ,]"))
+val filteredids = ids.filter(id => !id.contains(":"))
+val id1s = ids.map(id => (id, 1))
+val idCounts = id1s.reduceByKey((a,b) => a+b)
+val finalIdCounts = idCounts.filter({case (_, b) => b > 1000})
+finalIdCounts.saveAsTextFile("output")
+System.exit(0)
